@@ -1,0 +1,63 @@
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta Http-Equiv="Cache" content="no-cache">
+    <meta Http-Equiv="Pragma-Control" content="no-cache">
+    <meta Http-Equiv="Cache-directive" Content="no-cache">
+    <meta Http-Equiv="Pragma-directive" Content="no-cache">
+    <meta Http-Equiv="Cache-Control" Content="no-cache">
+    <meta Http-Equiv="Pragma" Content="no-cache">
+    <meta Http-Equiv="Expires" Content="0">
+    <meta Http-Equiv="Pragma-directive: no-cache">
+    <meta Http-Equiv="Cache-directive: no-cache">
+
+    <script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+
+        function libAjax() {
+            var req;
+            function start() {
+                date_array = ['20220113', '20220114', '20220115']
+                req = $.ajax({
+                    url: '/news/crawling', // form action, path('crawling', views.crawling, name='crawling'),
+                    type: 'POST',  // form method, get
+                    cache: false, // 응답 결과 임시 저장 취소
+                    async: true,  // true: 비동기 통신
+                    dataType: 'json', // 응답 형식: json, html, xml...
+                    data: {'arr': date_array},      // 데이터
+                    success: function (data) {
+                        console.log(data)
+                    }
+                });
+
+            }
+
+            function stop() {
+                req.abort();
+            }
+
+            return { start: start, stop: stop }
+        }
+
+        var obj = libAjax();
+
+        $(".go").click(function () {
+
+
+            obj.start();
+
+
+        })
+    </script>
+
+</head>
+
+<body>
+    <input type="button" class="go" value="GO!">
+    <input type="button" class="stop" value="STOP!">
+</body>
