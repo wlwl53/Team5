@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # http://127.0.0.1:8000/
     path('news/', include('news.urls')),  # /news/urls.py
+    path('property/', include('property.urls')),  # /news/urls.py
 ]

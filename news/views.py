@@ -53,7 +53,7 @@ def home(request):
 
 # 시작 페이지 Template 적용
 # def index(request):
-#     return render(request, 'index.html') # news/templates/index.html
+#     return render(request, 'chart_index.html') # news/templates/chart_index.html
 
 def test(request):
     return render(request, 'test.html') # news/templates/test.html
@@ -64,7 +64,7 @@ def index(request):
     result_set = News.objects.all().order_by('-ymd','rdate')  # 모든 레코드를 가져오는 명령어, SELECT ~
     result_set = {'result_set': result_set} # key, value
     #print(result_set.items())
-    return render(request, 'index.html', result_set) # /news/templates/index.html
+    return render(request, 'chart_index.html', result_set) # /news/templates/chart_index.html
 
 def get_item(request):
     data = News.objects.all().order_by('-ymd','rdate')
