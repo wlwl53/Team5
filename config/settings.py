@@ -39,12 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'news',
-<<<<<<< HEAD
     'reco.apps.AisConfig',
-=======
     'property',
     'ais',
->>>>>>> 5ce47d8396fddd0617b2d74ef60bafd073a76364
 ]
 
 MIDDLEWARE = [
