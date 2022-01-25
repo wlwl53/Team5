@@ -1,0 +1,39 @@
+ /*
+  version 1.9
+  <link href="../css/style.css" rel="Stylesheet" type="text/css">
+  */
+  /* 모든 태그에 적용 */
+  *{
+     font-family: Malgun Gothic;
+     font-size: 22px;
+     margin: 0px;
+     padding: 0px;
+     color: #555555;
+     line-height: 30px;
+  }
+
+  .container {
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  A:link{  /* 방문전 상태 */
+    text-decoration: none; /* 밑줄 삭제 */
+    color: #333333;
+  }
+
+  A:visited{  /* 방문후 상태 */
+    text-decoration: none; /* 밑줄 삭제 */
+    color: #333333;
+  }
+
+  A:hover{  /* A 태그에 마우스가 올라간 상태 */
+    text-decoration: underline; /* 밑줄 출력 */
+    color: #7777FF;
+  }
+
+  A:active{  /* A 태그를 클릭한 상태 */
+    text-decoration: underline; /* 밑줄 출력 */
+    color: #7777FF;
+  }
+

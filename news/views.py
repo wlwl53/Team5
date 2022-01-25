@@ -57,11 +57,15 @@ def home(request):
 
 # 시작 페이지 Template 적용
 # def index(request):
-#     return render(request, 'index.html') # news/templates/index.html
+#     return render(request, 'chart_index.html') # news/templates/chart_index.html
 
 def test(request):
+<<<<<<< HEAD
     return render(request, 'test.html')  # news/templates/test.html
 
+=======
+    return render(request, 'ais_index.html') # news/templates/ais_index.html
+>>>>>>> 5ce47d8396fddd0617b2d74ef60bafd073a76364
 
 # news table list
 def index(request):
