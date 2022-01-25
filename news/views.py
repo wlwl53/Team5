@@ -366,7 +366,7 @@ def trend_analysis(request):
 
 #추천
 
-from ais.AI_models.Tensorflow_model import Recommend_house
+from reco.AI_models.Tensorflow_model import Recommend_house
 
 
 def index(request):

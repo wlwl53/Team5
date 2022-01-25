@@ -1,9 +1,9 @@
 from django.test import TestCase
 
-from ais.AI_models.Tensorflow_model import *
+from reco.AI_models.Tensorflow_model import *
 rb = Recommend_book()
 
-# import ais.AI_models.Tensorflow_model as tm
+# import reco.AI_models.Tensorflow_model as tm
 # rb = tm.Recommend_book()
 
 rb.proc('1,1,1') # 개발 관련 도서 추천 필요

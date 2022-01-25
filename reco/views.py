@@ -4,8 +4,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
-# http://127.0.0.1:8000 --> /ais/templates/index.html
-from ais.AI_models.Tensorflow_model import Recommend_house
+# http://127.0.0.1:8000 --> /reco/templates/index.html
+from reco.AI_models.Tensorflow_model import Recommend_house
 
 
 def index(request):
