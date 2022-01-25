@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>관심분야 등록</title>
+    {% load static %}
+    <link href="{% static '/css/style.css' %}" rel="Stylesheet" type="text/css">
+    <script type="text/JavaScript"
+                 src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() { // 자동 실행
+        $('#btn_forward').on('click', function() { location.href='/recommend_house/form1'; });
+        $('#btn_close').on('click', function() { window.close(); });     // 윈도우 닫기
+      });
+    </script>
+</head>
+<body>
+<DIV class="container">
+    <H1 style="text-align: center; font-size:30px;">관심분야 등록</H1>
+
+    <DIV style="text-align:center; margin: 50px auto;">
+        관심 분야를 등록하시면 추천 서비스를 이용하실수 있습니다.<br><br>
+    </DIV>
+
+    <DIV style="text-align:center; margin: 50px auto;">
+        <button type='button' id='btn_forward'>관심분야 등록하기</button>
+        <button type='button' id='btn_close'>취소</button>
+    </DIV>
+
+</DIV>
+</body>
+</html>
+

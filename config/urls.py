@@ -21,4 +21,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # http://127.0.0.1:8000/
     path('news/', include('news.urls')),  # /news/urls.py
+    path('recommend_house/start/', views.recommend_house_start),
+    path('recommend_house/form1/', views.recommend_house_form1),
+    path('recommend_house/form2/', views.recommend_house_form2),
+    path('recommend_house/form3/', views.recommend_house_form3),
+    path('recommend_house/form4/', views.recommend_house_form4),
+    path('recommend_house/form5/', views.recommend_house_form5),
+    path('recommend_house/end/', views.recommend_house_end),
+    path('recommend_house/end_ajax/', views.recommend_house_end_ajax),  # 결과를 ajax로 리턴
 ]
