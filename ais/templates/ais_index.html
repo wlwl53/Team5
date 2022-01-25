@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot</title>
+    {% load static %}
+    <link href="{% static '/css/style.css' %}" rel="Stylesheet" type="text/css">
+
+    <script type="text/javascript">
+        window.onload = function() {
+
+        }
+
+        function chatting(){
+          var url = './chatbot/chatting/';
+          var win = window.open(url, '챗봇', 'width=700px, height=630px');
+
+          var x = (screen.width - 700) / 2;
+          var y = (screen.height - 630) / 2;
+
+          win.moveTo(x, y); // 화면 중앙으로 이동
+        }
+</script>
+
+
+</head>
+<body>
+<DIV class="container" style="margin: 50px auto; width: 60%;">
+<H1 style="text-align: center; font-size:30px;">Chatbot</H1>
+<UL style="margin-left: 50px;">
+
+  <LI style="list-style:none">
+      <br>
+      <OL style="padding-left: 150px;">
+
+          <LI style="line-height: 35px;"><A href="javascript: chatting()">챗봇</A></LI>
+
+      </OL>
+
+  </LI>
+</UL>
+</DIV>
+</body>
+</html>
+

@@ -56,7 +56,7 @@ def home(request):
 #     return render(request, 'chart_index.html') # news/templates/chart_index.html
 
 def test(request):
-    return render(request, 'test.html') # news/templates/test.html
+    return render(request, 'ais_index.html') # news/templates/ais_index.html
 
 # news table list
 def index(request):
@@ -64,7 +64,7 @@ def index(request):
     result_set = News.objects.all().order_by('-ymd','rdate')  # 모든 레코드를 가져오는 명령어, SELECT ~
     result_set = {'result_set': result_set} # key, value
     #print(result_set.items())
-    return render(request, 'chart_index.html', result_set) # /news/templates/chart_index.html
+    return render(request, 'index.html', result_set) # /news/templates/index.html
 
 def get_item(request):
     data = News.objects.all().order_by('-ymd','rdate')

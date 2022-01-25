@@ -111,8 +111,8 @@ def bar1(gu_trade_count_cost):
     bar = Bar("구별 거래금액의 평균", "1평당 평균 거래금액", title_pos='center')
     #bar.use_theme("wonderland")
     bar.add("", xaxis, cost_arr, mark_point=["max", "min"], xaxis_interval=0, xaxis_rotate=30, yaxis_rotate=0,
-            label_pos='inside',
-            yaxis_name="단위 : 만원", yaxis_name_pos='end', yaxis_name_size=12, yaxis_name_gap=25, )
+            label_pos='inside',yaxis_name="단위 : 만원", yaxis_name_pos='end', yaxis_name_size=12, yaxis_name_gap=25,
+            is_datazoom_show=True, datazoom_type="inside", mark_line=["average"],)
 
     bar.width = 900
 
@@ -125,7 +125,7 @@ def bar2(gu_trade_count_cost):
     bar = Bar("구별 거래량", "", title_pos='center')
     #bar.use_theme("walden")
     bar.add("", xaxis, count_arr, is_label_show=True, xaxis_interval=0, xaxis_rotate=30, yaxis_max=5000,
-            yaxis_name="단위 : 건", yaxis_name_pos='end', yaxis_name_size=12, yaxis_name_gap=25, )
+            yaxis_name="단위 : 건", yaxis_name_pos='end', yaxis_name_size=12, yaxis_name_gap=25, is_datazoom_show=True,)
 
     bar.width = 900
 

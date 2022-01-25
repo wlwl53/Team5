@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>http://localhost:8000/chat_bot/test</title>
+
+<script type="text/JavaScript"
+          src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container {
+            width: 600px;
+            margin: 0 auto;
+            padding: 10px
+        }
+        .container h2{
+            text-align: left;
+            padding: 5px 5px 5px 15px; /* top, right, bottom, left */
+            color: #FFBB00;
+            border-left: 3px solid #FFBB00;
+            margin-bottom: 20px;
+        }
+        .chatting_pannel {
+            background-color: #EFEFEF;
+            width: 100%;
+            height: 400px;
+            overflow-y: scroll; /* scrollbar가 자동으로 생김 */
+            padding: 5px;
+        }
+        .chatting_pannel p{
+            font-size: 16px;
+            border-radius: 10px; 
+            display: inline-block;
+            padding: 2px 5px;
+        }
+        input {
+            width: 78%;
+            height: 25px;
+        }
+        .send_msg{
+            text-align: right;
+            color: #000000;
+            background-color: yellow;
+        }
+        .receive_msg{
+            text-align: left;
+            color: #FFFFFF;
+            background-color: #7a7373;
+        }
+
+</style>
+
+<script type="text/javascript">
+$(function() {
+    // 키이벤트 처리
+    $('#chatting').on('keydown', function(key) {
+      if (key.keyCode == 13) { // Enter
+        // alert('enter input');
+        send();
+      }
+    });
+})
+
+function send() {
+    var msg = $("#chatting").val();
+    $("#chatting_pannel").append("<div style='text-align: right'><p class='send_msg'>문의: " + msg + "</p></div>");
+    $('#chatting').val("");
+
+    receive();
+}
+
+function receive() {
+    var msg = '감사합니다.';
+    if(msg != null && msg.trim() != ''){
+        $("#chatting_pannel").append("<p class='receive_msg'>안내 센터: " + msg + "</p><br>");
+    }
+
+}
+</script>
+
+</head>
+<body>
+    <div id="container" class="container">
+        <h2>실시간 문의</h2>
+
+        <div id="chatting_pannel" class="chatting_pannel">
+        </div>
+        <div style='margin: 0px auto;'>
+            메시지
+            <input id="chatting" placeholder="보내실 메시지를 입력하세요." 
+                   value="간짜장 예약합니다."></th>
+            <button onclick="send()" id="sendBtn" class="btn btn-info">보내기</button></th>
+        </div>
+    </div>
+</body>
+</html>
