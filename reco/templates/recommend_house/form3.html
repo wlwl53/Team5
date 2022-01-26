@@ -67,24 +67,17 @@
         <input type='hidden' name='step2' value='{{ step2 }}'>
         
         <br>
-        <TABLE style='margin: 0px auto;'>
+<TABLE style='margin: 0px auto;'>
             <TR>
                 <TD class='td_image'>
-                    <img id='img1' src="{% static '/recommend_images/v13.jpg' %}" style='float:left; height: 200px'>원룸
+                    <img id='img1' src="{% static '/recommend_images/v13.jpg' %}" style='float:left; height: 150px'><br/>원룸
                 </TD>
                 <TD class='td_image'>
-                    <img id='img2' src="{% static '/recommend_images/v23.jpg' %}" style='float:left; height: 200px'>투룸
+                    <img id='img2' src="{% static '/recommend_images/v23.jpg' %}" style='float:left; height: 150px'><br/>투룸
                 </TD>
                 <TD class='td_image'>
-                    <img id='img3' src="{% static '/recommend_images/v33.jpg' %}" style='float:left; height: 200px'>쓰리룸
+                    <img id='img3' src="{% static '/recommend_images/v33.jpg' %}" style='float:left; height: 150px'><br/>쓰리룸
                 </TD>
-                <TD class='td_image'>
-                    <img id='img4' src="{% static '/recommend_images/v43.jpg' %}" style='float:left; height: 200px'>오피스텔
-                </TD>
-                <TD class='td_image'>
-                    <img id='img5' src="{% static '/recommend_images/v53.jpg' %}" style='float:left; height: 200px'>아파트
-                </TD>
-            </TR>
             <TR>
                 <TD class='td_radio'>
                     <input type='radio' name='step3' id='step1' value='1' class='td_radio_select'>
@@ -95,6 +88,18 @@
                 <TD class='td_radio'>
                     <input type='radio' name='step3' id='step3' value='3' class='td_radio_select'>
                 </TD>
+            </TR>
+        </TABLE>
+        <TABLE style='margin: 0px auto;'>
+                <TD class='td_image'>
+                    <img id='img4' src="{% static '/recommend_images/v43.jpg' %}" style='float:left; height: 150px'><br/>오피스텔
+                </TD>
+                <TD class='td_image'>
+                    <img id='img5' src="{% static '/recommend_images/v53.jpg' %}" style='float:left; height: 150px'><br/>아파트
+                </TD>
+
+            </TR>
+            <TR>
                 <TD class='td_radio'>
                     <input type='radio' name='step3' id='step4' value='4' class='td_radio_select'>
                 </TD>
