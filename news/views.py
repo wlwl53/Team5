@@ -49,7 +49,7 @@ plt.rcParams['axes.unicode_minus'] = False  # minus 부호는 unicode 적용시 
 def home(request):
     # 출력 페이지로 보낼 값을 {.....} 블럭에 선언
     # /news/templates/home.html
-    return render(request, 'home.html', {})
+    return render(request, 'index.html', {})
 
 
 # def index(request):
@@ -60,12 +60,10 @@ def home(request):
 #     return render(request, 'chart_index.html') # news/templates/chart_index.html
 
 def test(request):
-<<<<<<< HEAD
+
     return render(request, 'test.html')  # news/templates/test.html
 
-=======
-    return render(request, 'ais_index.html') # news/templates/ais_index.html
->>>>>>> 5ce47d8396fddd0617b2d74ef60bafd073a76364
+    #return render(request, 'ais_index.html') # news/templates/ais_index.html
 
 # news table list
 def index(request):
@@ -74,7 +72,6 @@ def index(request):
     result_set = {'result_set': result_set}  # key, value
     # print(result_set.items())
     return render(request, 'index.html', result_set)  # /news/templates/index.html
-
 
 def get_item(request):
     data = News.objects.all().order_by('-ymd', 'rdate')
@@ -367,95 +364,3 @@ def trend_analysis(request):
             "msg": "분석할 데이터가 없습니다. 데이터를 수집해주세요.",
         }
     return HttpResponse(json.dumps(data), content_type="application/json")
-
-#추천
-
-from reco.AI_models.Tensorflow_model import Recommend_house
-
-
-def index(request):
-    return render(request, 'index.html')
-
-
-def recommend_house_start(request):
-    # 출력 페이지로 보낼 값을 {.....} 블럭에 선언
-    # /machine/templates/recommend_house/start.html
-    return render(request, 'recommend_house/start.html', {})
-
-
-def recommend_house_form1(request):
-    # 출력 페이지로 보낼 값을 {.....} 블럭에 선언
-    # /machine/templates/recommend_house/form1.html
-    return render(request, 'recommend_house/form1.html', {})
-
-
-def recommend_house_form2(request):
-    step1 = int(request.GET['step1'])
-    data = {'step1': step1}  # 출력 페이지로 보낼 값을 {.....} 블럭에 선언
-    # /machine/templates/recommend_house/form2.html
-    return render(request, 'recommend_house/form2.html', data)  # form2.html 파일로 데이터가 전송됨.
-
-
-def recommend_house_form3(request):
-    step1 = int(request.GET['step1'])
-    step2 = int(request.GET['step2'])
-    data = {'step1': step1, 'step2': step2}  # 출력 페이지로 보낼 값을 {.....} 블럭에 선언
-    # /machine/templates/recommend_house/form3.html
-    return render(request, 'recommend_house/form3.html', data)
-
-
-def recommend_house_form4(request):
-    step1 = int(request.GET['step1'])
-    step2 = int(request.GET['step2'])
-    step3 = int(request.GET['step3'])
-    data = {'step1': step1, 'step2': step2, 'step3': step3}
-    return render(request, 'recommend_house/form4.html', data)
-
-
-def recommend_house_form5(request):
-    step1 = int(request.GET['step1'])
-    step2 = int(request.GET['step2'])
-    step3 = int(request.GET['step3'])
-    step4 = int(request.GET['step4'])
-    data = {'step1': step1, 'step2': step2, 'step3': step3, 'step4': step4}
-    return render(request, 'recommend_house/form5.html', data)
-
-
-def recommend_house_end(request):
-    step1 = request.GET['step1']
-    step2 = request.GET['step2']
-    step3 = request.GET['step3']
-    step4 = request.GET['step4']
-    step5 = request.GET['step5']
-
-    recommend_house = Recommend_house()  # 모델 사용
-    data = ",".join([step1, step2, step3, step4, step5])
-    print('data:', data)
-
-    index = recommend_house.proc(data)  # 1 ~ 3 확률이 높은 index 리턴됨.
-    print('index:', index)
-
-    # /machine/templates/recommend_house/end.html
-    return render(request, 'recommend_house/end.html', {'index': index})
-
-
-def recommend_house_end_ajax(request):
-    step1 = request.GET['step1']
-    step2 = request.GET['step2']
-    step3 = request.GET['step3']
-    step4 = request.GET['step4']
-    step5 = request.GET['step5']
-
-    recommend_house = Recommend_house()  # 모델 사용
-    data = ",".join([step1, step2, step3, step4, step5])
-    print('data:', data)
-
-    index = recommend_house.proc(data)
-    print('index:', index)
-
-    content = {
-        'index': int(index),
-    }
-    # 날짜등의 변한 선언: cls=DjangoJSONEncoder
-    # return HttpResponse(json.dumps(content, cls=DjangoJSONEncoder), content_type="application/json")
-    return HttpResponse(json.dumps(content), content_type="application/json")

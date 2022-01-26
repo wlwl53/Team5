@@ -20,19 +20,14 @@ from news import views # 'news' package로부터 'views' python 파일 import
 urlpatterns = [
     path('admin/', admin.site.urls),
     # http://127.0.0.1:8000/
+
+    # 트렌드분석
     path('news/', include('news.urls')),  # /news/urls.py
-<<<<<<< HEAD
-    path('recommend_house/start/', views.recommend_house_start),
-    path('recommend_house/form1/', views.recommend_house_form1),
-    path('recommend_house/form2/', views.recommend_house_form2),
-    path('recommend_house/form3/', views.recommend_house_form3),
-    path('recommend_house/form4/', views.recommend_house_form4),
-    path('recommend_house/form5/', views.recommend_house_form5),
-    path('recommend_house/end/', views.recommend_house_end),
-    path('recommend_house/end_ajax/', views.recommend_house_end_ajax),  # 결과를 ajax로 리턴
-]
-=======
     path('property/', include('property.urls')),  # /property/urls.py
+
+    # 챗봇
     path('ais/', include('ais.urls')),  # /ais/urls.py
+
+    # 추천
+    path('recommend_house/', include('reco.urls')),  # /reco/urls.py
 ]
->>>>>>> 5ce47d8396fddd0617b2d74ef60bafd073a76364

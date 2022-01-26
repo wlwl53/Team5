@@ -18,4 +18,5 @@ urlpatterns = [
     # http://127.0.0.1:8000/news/trend_analysis
     path('trend_analysis', views.trend_analysis, name='trend_analysis'),
     path('test', views.test, name='test'),
+    path('home', views.home, name='home'),
 ]

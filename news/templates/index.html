@@ -2,7 +2,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta Http-Equiv="Cache" content="no-cache">
   <meta Http-Equiv="Pragma-Control" content="no-cache">
   <meta Http-Equiv="Cache-directive" Content="no-cache">
@@ -61,7 +60,7 @@
       $('#btn_trend').on('click', btn_trend_analysis);  // 워드 클라우드 분석 실행
       $('#btn_trend_result').on('click', btn_trend_analysis_result);  // 분석 결과 조회
 
-      $('#btn_date').on('click', date_send);  // 분석 결과 조회
+      // $('#btn_date').on('click', date_send);  // 분석 결과 조회
 
       today = new Date();
       console.log("today.toISOString() >>>" + today.toISOString());
@@ -117,40 +116,39 @@
     }
 
     var cycle_start_ajax_id = 0; // 순환 함수의 참조값 저장
-    let isErrorOccurred = false;
 
     const delay = (n) => new Promise(r => setTimeout(r, n * 1000));
 
-    function cycle_start() { // 반복 실행을 등록
-      // console.log('-> cycle_start');
-      // cycle_start_ajax_id = setInterval(cycle_start_ajax, 5000);  // 1000 * 5, 1000이 1초,
-      // console.log('-> cycle_start_ajax_id: ' + cycle_start_ajax_id); // 3
+    function cycle_start() { // 수집시작
+        // console.log('-> cycle_start');
+        // cycle_start_ajax_id = setInterval(cycle_start_ajax, 5000);  // 1000 * 5, 1000이 1초,
+        // console.log('-> cycle_start_ajax_id: ' + cycle_start_ajax_id); // 3
 
-      var startDate = $("#start_dt").val();
-      var startDateArr = startDate.split('-');
+        var startDate = $("#start_dt").val();
+        var startDateArr = startDate.split('-');
 
-      var lastDate = $("#last_dt").val();
-      var lastDateArr = lastDate.split('-');
+        var lastDate = $("#last_dt").val();
+        var lastDateArr = lastDate.split('-');
 
-      var startDateCompare = new Date(startDateArr[0], parseInt(startDateArr[1]) - 1, startDateArr[2]);
-      var lastDateCompare = new Date(lastDateArr[0], parseInt(lastDateArr[1]) - 1, lastDateArr[2]);
+        var startDateCompare = new Date(startDateArr[0], parseInt(startDateArr[1]) - 1, startDateArr[2]);
+        var lastDateCompare = new Date(lastDateArr[0], parseInt(lastDateArr[1]) - 1, lastDateArr[2]);
 
-      var date_array = [];
-      if (startDateCompare.getTime() > lastDateCompare.getTime()) { // Date값 검사
-        alert("시작날짜와 종료날짜를 확인해주세요.");
-        return;
-
-      } else {
-        var date_STL = getDatesStartToLast(startDate, lastDate);
-
-        if (date_STL.length > 100) {
-          alert("수집기간은 30일 이내로 입력해주세요.");
+        var date_array = [];
+        if (startDateCompare.getTime() > lastDateCompare.getTime()) { // Date값 검사
+          alert("시작날짜와 종료날짜를 확인해주세요.");
           return;
+
         } else {
-        
-          for (i = 0; i < date_STL.length; i++) {
-            date_array.push(date_STL[i].replace(/\-/g, ''));
-            }           
+          var date_STL = getDatesStartToLast(startDate, lastDate);
+
+          if (date_STL.length > 100) {
+            alert("최대 수집기간은 100일입니다.");
+            return;
+          } else {
+
+            for (i = 0; i < date_STL.length; i++) {
+              date_array.push(date_STL[i].replace(/\-/g, ''));
+            }
           }
 
           //console.log(date_array);
@@ -161,23 +159,23 @@
           async function log(number) {
             return await
               $.ajax({
-                  url: '/news/crawling', // form action, path('crawling', views.crawling, name='crawling'),
-                  type: 'POST',  // form method, get
-                  cache: false, // 응답 결과 임시 저장 취소
-                  async: true,  // true: 비동기 통신
-                  dataType: 'json', // 응답 형식: json, html, xml...
-                  data: { 'arr': number }     // 데이터
-                  ,success: function (rdata) { // 응답이 온경우
-                    //result += rdata.cnt;
-                    //console.log(result);
-                    console.log(rdata.ymd + ' >>> ' + rdata.cnt + '건 처리됨.');
-                    // console.log('>>> total->' + total + '건 처리됨.');
-                    $('#panel2').html(rdata.ymd + ' → ' + rdata.cnt + '건 처리됨.');  // 보통 DIV, SPAN등에 출력
-                    $('#panel2').css("color", "blue");
-                    $('#panel2').show(); // 숨겨진 태그의 출력
-                  }, error: function (request, status, error) { // callback 함수
-                     console.log(error);
-                   }
+                url: '/news/crawling', // form action, path('crawling', views.crawling, name='crawling'),
+                type: 'POST',  // form method, get
+                cache: false, // 응답 결과 임시 저장 취소
+                async: true,  // true: 비동기 통신
+                dataType: 'json', // 응답 형식: json, html, xml...
+                data: { 'arr': number }     // 데이터
+                , success: function (rdata) { // 응답이 온경우
+                  //result += rdata.cnt;
+                  //console.log(result);
+                  console.log(rdata.ymd + ' >>> ' + rdata.cnt + '건 처리됨.');
+                  // console.log('>>> total->' + total + '건 처리됨.');
+                  $('#panel2').html(rdata.ymd + ' → ' + rdata.cnt + '건 처리됨.');  // 보통 DIV, SPAN등에 출력
+                  $('#panel2').css("color", "blue");
+                  $('#panel2').show(); // 숨겨진 태그의 출력
+                }, error: function (request, status, error) { // callback 함수
+                  console.log(error);
+                }
               })
                 .then(function (result) {
                   console.log(result);
@@ -193,7 +191,7 @@
           }
           run();
         }
-       }
+      }
     
 
     function cycle_stop() {  // 반복 실행을 중지 시키는 함수
@@ -364,10 +362,6 @@
           <button id='btn_trend' class='btn btn-success'>트렌드 분석</button>
           <button id='btn_trend_result' class='btn btn-warning'>분석 결과 조회</button>
         </DIV> <!-- content_body END -->
-<!--        <DIV class='content_body'>-->
-<!--          <button id='btn' class='btn btn-primary' onclick="location.href='/property/test'">시각화</button>-->
-<!--        </DIV> &lt;!&ndash; content_body END &ndash;&gt;-->
-
         <DIV id='panel1'
           style='display: none; position: relative; margin: 10px auto; text-align: center; width: 60%; padding: 5px;'>
         </DIV>
@@ -400,7 +394,7 @@
         </ul>
       </div>
     </div>
-
+    <A href='"+Member.LIST_FILE+"?&word="+word+"&now_page="+_now_page'>이전</A></span>")
     <div class="panel-footer" style="margin-top:auto; text-align: center;">
       Crawling by Django.
     </div>

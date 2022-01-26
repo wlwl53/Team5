@@ -11,7 +11,6 @@ from reco.AI_models.Tensorflow_model import Recommend_house
 def index(request):
     return render(request, 'index.html')
 
-
 def recommend_house_start(request):
     # 출력 페이지로 보낼 값을 {.....} 블럭에 선언
     # /machine/templates/recommend_house/start.html
