@@ -17,6 +17,9 @@ urlpatterns = [
     path('delete_all', views.delete_all, name='delete_all'),
     # http://127.0.0.1:8000/news/trend_analysis
     path('trend_analysis', views.trend_analysis, name='trend_analysis'),
+    # http://127.0.0.1:8000/news/analysis_result
+    path('analysis_result', views.analysis_result, name='analysis_result'),
     path('test', views.test, name='test'),
     path('home', views.home, name='home'),
+    # path('trend_image', views.trend_image, name='trend_image'),
 ]

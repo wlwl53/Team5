@@ -207,6 +207,9 @@ def delete_all(request):
 
     return HttpResponse(json.dumps(data), content_type="application/json")
 
+# def trend_image(request):
+#     print("이미지 생성")
+#     return render(request, 'trend_image.html')
 
 def trend_analysis(request):
     print("데이터 분석 시작")
@@ -340,7 +343,7 @@ def trend_analysis(request):
         # plt.savefig('./news-wordcloud1.png')
 
         # 현재 프로젝트 static 폴더 기준으로 선언해야 인식됨.
-        fname_django = 'C:/kd1/ws_python/Team5/news/static/images/news-wordcloud.png'
+        fname_django = './news/static/images/news-wordcloud.png'
         fname_spring = 'C:/kd1/ws_java/team5_v2sbm3c/src/main/resources/static/trend/images/news-wordcloud.png'
         if os.path.exists(fname_django):
             # print("기존에 생성된 news-wordcloud.png 파일을 삭제했습니다.")
@@ -357,6 +360,31 @@ def trend_analysis(request):
         data = {
             "code": 1,
             "msg": "데이터분석을 완료했습니다.",
+        }
+    else:
+        data = {
+            "code": 0,
+            "msg": "분석할 데이터가 없습니다. 데이터를 수집해주세요.",
+        }
+    return HttpResponse(json.dumps(data), content_type="application/json")
+
+def analysis_result(request):
+    print("분석결과 조회")
+    conn = pymysql.connect(host='localhost', user='pyuser', password='1234',
+                           db='team5', charset='utf8')
+
+    cursor = conn.cursor()
+    sql_pre = '''
+        SELECT COUNT(newsno) AS cnt
+        FROM news_news
+        '''
+    cursor.execute(sql_pre)
+    row = cursor.fetchone()
+
+    if row[0] != 0:
+        data = {
+            "code": 1,
+            "msg": "분석결과를 조회했습니다.",
         }
     else:
         data = {
